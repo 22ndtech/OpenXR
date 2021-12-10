@@ -245,6 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 433949593}
+  - component: {fileID: 433949592}
   m_Layer: 0
   m_Name: --ECS
   m_TagString: Untagged
@@ -252,6 +253,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &433949592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433949591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2ca744c4f163a8438be426177e7ee51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: 30c19440aef7e29498f40f9fc4b8c9a4, type: 2}
+  numberOfZombies: 20000
+  useJobs: 1
 --- !u!4 &433949593
 Transform:
   m_ObjectHideFlags: 0
