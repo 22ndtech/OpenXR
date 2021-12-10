@@ -7,11 +7,24 @@ using Unity.Collections;
 using Unity.Rendering;
 using Unity.Rendering.HybridV2;
 using Unity.Mathematics;
+using Unity.Jobs;
+using Unity.Burst;
 
 public class InitializeECS : MonoBehaviour {
   [SerializeField] private Mesh mesh;
   [SerializeField] private Material material;
   [SerializeField] private int numberOfZombies = 10;
+  [SerializeField] private bool useJobs = false;
+
+  private void LongTask() {
+    float value = 0f;
+
+    for (int i = 0; i < 50000; i++) {
+      value = math.sqrt(value * i);
+    }
+
+    Debug.Log("value = " + value);
+  }
 
   private void Start() {
 
@@ -52,5 +65,45 @@ public class InitializeECS : MonoBehaviour {
     }
 
     entityArray.Dispose();
+  }
+
+  private void Update() {
+    float startTime = Time.realtimeSinceStartup;
+
+    if (useJobs) {
+      NativeList<JobHandle> jobHandles = new NativeList<JobHandle>(Allocator.Temp);
+
+      for (int i = 0; i < 10; i++) {
+        JobHandle jobHandle = LongTaskJob();
+        jobHandles.Add(jobHandle);
+      }
+
+      JobHandle.CompleteAll(jobHandles);
+      jobHandles.Dispose();
+
+    } else {
+      for(int i = 0; i < 10; i++) {
+        LongTask();
+      }
+    }
+
+    Debug.Log(((Time.realtimeSinceStartup - startTime) * 1000f) + "ms");
+  }
+
+  private JobHandle LongTaskJob() {
+    LongTask job = new LongTask();
+    return job.Schedule();
+  }
+}
+
+[BurstCompile]
+public struct LongTask : IJob {
+  public void Execute() {
+    float value = 0f;
+
+    for (int i = 0; i < 50000; i++) {
+      value = math.sqrt(value * i);
+    }
+
   }
 }
