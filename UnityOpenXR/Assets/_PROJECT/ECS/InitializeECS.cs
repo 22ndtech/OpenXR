@@ -41,7 +41,7 @@ public class InitializeECS : MonoBehaviour {
   private void Start() {
 
     zombieList = new List<Zombie>();
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < numberOfZombies; i++) {
       Transform zombieTransform = Instantiate(pfZombie, new Vector3(UnityEngine.Random.Range(-8f, 8f), UnityEngine.Random.Range(-5f, 5f)), Quaternion.identity);
       zombieList.Add(new Zombie {
         transform = zombieTransform,

@@ -9,6 +9,7 @@ UnityOpenXR/[Bb]uild/
 UnityOpenXR/[Bb]uilds/
 UnityOpenXR/[Ll]ogs/
 [UnityOpenXR/Mm]emoryCaptures/
+[UnityOpenXR/Mm]emoryCaptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !UnityOpenXR/[Aa]ssets/**/*.meta
@@ -57,4 +58,5 @@ UnityOpenXR/sysinfo.txt
 
 # Crashlytics generated file
 UnityOpenXR/crashlytics-build.properties
-
+UnityOpenXR/Assets/*
+!UnityOpenXR/Assets/_PROJECT
