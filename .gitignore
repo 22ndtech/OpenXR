@@ -60,3 +60,4 @@ UnityOpenXR/sysinfo.txt
 UnityOpenXR/crashlytics-build.properties
 UnityOpenXR/Assets/*
 !UnityOpenXR/Assets/_PROJECT
+UnityOpeXR/obj/*
